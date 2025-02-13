@@ -1,8 +1,8 @@
-# Restaurant Reservation System
+# Restaurant Booking App
 Final Project for CS50x
 #### Video Demo:  <https://www.youtube.com/watch?v=huykymHFN7s&ab_channel=bartek>
 #### Description:
-The **Restaurant Reservation System** is a web application that allows customers to book tables at a restaurant, manage their reservations, and for admin users, view and manage all reservations. The application is built using **Flask** for the web framework and **SQLite** for the database. It is designed to handle various user roles, including standard users (customers) and admin users (restaurant staff). Admins can view and cancel any reservation, while regular users can only manage their own reservations.
+The **Restaurant Booking App** is a web application that allows customers to book tables at a restaurant, manage their reservations, and for admin users, view and manage all reservations. The application is built using **Flask** for the web framework and **SQLite** for the database. It is designed to handle various user roles, including standard users (customers) and admin users (restaurant staff). Admins can view and cancel any reservation, while regular users can only manage their own reservations.
 
 Key features include:
 - **User Registration and Authentication**: Users can register, log in, and change their password securely.
