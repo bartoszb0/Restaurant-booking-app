@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    View
+{% endblock %}
+
+{% block main %}
+
+    <h1>View available tables</h1>
+
+    <form action="/view" method="post">
+
+            <div class="mb-3">
+                <input type="date" required class="form-control mx-auto" name="date" id="datePicker">
+            </div>
+            <div class="mb-3">
+                <select name="time" required class="form-control mx-auto">
+                    <option disabled selected value="">Choose hour</option>
+                    {% for i in range(10, 23) %}
+                        <option value="{{ i }}">{{ i }}:00</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <select name="guests" required class="form-control mx-auto">
+                    <option disabled selected value="">How many guests?</option>
+                    {% for i in range(2, 7) %}
+                        <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Show available tables</button>
+            </div>
+
+    </form>
+
+    <script>
+        const today = new Date();
+        today.setDate(today.getDate() + 1);
+        const minDate = today.toISOString().split('T')[0];
+        document.getElementById('datePicker').setAttribute('min', minDate);
+    </script>
+
+{% endblock %}

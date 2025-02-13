@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Reservations
+{% endblock %}
+
+{% block main %}
+
+    {% if reservations %}
+
+        {% if session["role"] == "admin" %}
+            <h1>All reservations</h1>
+        {% else %}
+            <h1>Your reservations</h1>
+        {% endif %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    {% if session["role"] == "admin" %}
+                    <th>Reservation ID</th>
+                    <th>User ID</th>
+                    {% endif %}
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Guests</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                <form action="/reservations" method="post">
+                    <tr>
+                        {% if session["role"] == "admin" %}
+                        <td>{{ reservation.id }}</td>
+                        <td>{{ reservation.user_id }}</td>
+                        {% endif %}
+                        <td>{{ reservation.date }}</td>
+                        <td>{{ reservation.time }}:00 - {{ reservation.time + 1 }}:00</td>
+                        <td>{{ reservation.guests }}</td>
+                        <td>
+                            <input type="hidden" name="reservation_id" value="{{ reservation.id }}">
+                            <button class="btn btn-primary" id="cancel_button">Cancel</button>
+                        </td>
+                    </tr>
+                </form>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+    {% else %}
+
+        <h1>No reservations at the moment</h1>
+
+    {% endif %}
+
+{% endblock %}

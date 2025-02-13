@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book
+{% endblock %}
+
+{% block main %}
+
+    <h2>Found available table on {{ date }}, {{ time }}:00 for {{ guests }} people</h2>
+
+    <h2>{{ reservations }} table{{ 's' if reservations > 1 else '' }} left</h2>
+
+    {% if session["user_id"] %}
+
+        <form action="/book" method="post">
+            <!-- TODO VALIDATE -->
+            <input type="hidden" name="date" value="{{ date }}">
+            <input type="hidden" name="time" value="{{ time }}">
+            <input type="hidden" name="guests" value="{{ guests }}">
+
+            <p></p>
+            <div>
+                <button type="submit" class="btn btn-primary">Book table for one hour</button>
+            </div>
+
+        </form>
+
+    {% else %}
+
+        <a href="/login" class="btn btn-primary">Log in to book a table</a>
+
+    {% endif %}
+
+    
+{% endblock %}
